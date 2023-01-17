@@ -162,7 +162,7 @@ else {
             "ShazamEntertainmentLtd.Shazam"
             "SkypeApp"
             "Speed Test"
-            "Spotify"
+            #"Spotify"
             "SpotifyAB.SpotifyMusic"
             "StorePurchaseApp"
             "Sway"
