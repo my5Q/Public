@@ -1,6 +1,6 @@
-$latest_version = "1.00"
+$latest_version = "1.01"
 $penta_path = "C:\Program Files\5Q"
-$info_json = (Get-Content "$penta_path\Remove_bloatware_info.json" -Raw) | ConvertFrom-Json
+$info_json = (Get-Content "$penta_path\Remove_Bloatware_Info.json" -Raw) | ConvertFrom-Json
 $local_version = $info_json.psobject.Properties.Where({ $_.Name -eq "script_version" }).Value
 
 if ($local_version -eq $latest_version) {
@@ -11,7 +11,7 @@ else {
     #update json file locally
     $jsonVar = @"
 {
-    "script_name": "Remove_bloatware",
+    "script_name": "Remove_Bloatware",
     "script_version": "$latest_version",
     "computer_name": "$(hostname)"
 }
@@ -21,7 +21,7 @@ else {
         New-Item -ItemType Directory -Path $penta_path
     }
 
-    $jsonVar | Out-File "$penta_path\Remove_bloatware_info.json"
+    $jsonVar | Out-File "$penta_path\Remove_Bloatware_Info.json"
 
     Write-Host "======================================="
     Write-Host "---    Start Removing Bloatware     ---"
@@ -279,8 +279,8 @@ else {
         Write-Host "Removing Bloatware"
 
         foreach ($Bloat in $Bloatware) {
-            Get-AppxPackage -allusers  "*$Bloat*" | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
-            Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "*$Bloat*" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
+            Get-AppxPackage -AllUsers  "$Bloat" | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
+            Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "$Bloat" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
             Write-Host "Trying to remove $Bloat."
         }
             
