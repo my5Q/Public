@@ -279,8 +279,8 @@ else {
         Write-Host "Removing Bloatware"
 
         foreach ($Bloat in $Bloatware) {
-            Get-AppxPackage -AllUsers  "$Bloat" | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
-            Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "$Bloat" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
+            Get-AppxPackage -AllUsers  "*$Bloat" | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
+            Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "*$Bloat" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
             Write-Host "Trying to remove $Bloat."
         }
             
