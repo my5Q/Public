@@ -189,7 +189,7 @@ else {
             "XboxApp"
             "XboxGameCallableUI"
             "XboxGameOverlay"
-            "XboxGamingOverlay"
+            #"XboxGamingOverlay"
             "XboxIdentityProvider"
             "XboxSpeechToTextOverlay"
             "XINGAG.XING"
