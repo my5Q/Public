@@ -279,9 +279,9 @@ else {
         Write-Host "Removing Bloatware"
 
         foreach ($Bloat in $Bloatware) {
-            Get-AppxPackage -AllUsers  "*$Bloat" | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
-            Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "*$Bloat" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
-            Write-Host "Trying to remove $Bloat."
+            Get-AppxPackage -AllUsers  "*$Bloat*" | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
+            Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "*$Bloat*" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
+            Write-Host "Trying to remove $Bloat"
         }
             
         #Find and remove installed bloatwares with DISM
@@ -290,7 +290,7 @@ else {
         foreach ($Bloat in $installed_bloatwares) {
             $to_remove = $Bloat.substring(14) #Filter only the value of PackageName
             DISM /Online /Remove-ProvisionedAppxPackage /PackageName:$to_remove
-            Write-Host "Removing $to_remove ."
+            Write-Host "Removing $to_remove"
         }
 
         # List of built-in apps to remove
