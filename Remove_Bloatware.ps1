@@ -199,7 +199,7 @@ else {
             #"WindowsCalculator"
             "WindowsReadingList"
             #"WindowsStore"
-            "1527c705-839a-4832-9118-54d4Bd6a0c89
+            "1527c705-839a-4832-9118-54d4Bd6a0c89"
 "5A894077.McAfeeSecurity"
 "AppUp.IntelConnectivityPerformanceSuite"
 "AppUp.IntelGraphicsExperience"
