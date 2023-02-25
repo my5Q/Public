@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 $latest_version = "1.01"
 $penta_path = "C:\Program Files\5Q"
 $info_json = (Get-Content "$penta_path\Remove_bloatware_info.json" -Raw) | ConvertFrom-Json
+=======
+$latest_version = "1.05"
+$penta_path = "C:\Program Files\5Q"
+$info_json = (Get-Content "$penta_path\Remove_Bloatware_Info.json" -Raw) | ConvertFrom-Json
+>>>>>>> 05e630a876463b1339f18e8f65560d804c1dbe34
 $local_version = $info_json.psobject.Properties.Where({ $_.Name -eq "script_version" }).Value
 
 if ($local_version -eq $latest_version) {
@@ -11,7 +17,11 @@ else {
     #update json file locally
     $jsonVar = @"
 {
+<<<<<<< HEAD
     "script_name": "Remove_bloatware",
+=======
+    "script_name": "Remove_Bloatware",
+>>>>>>> 05e630a876463b1339f18e8f65560d804c1dbe34
     "script_version": "$latest_version",
     "computer_name": "$(hostname)"
 }
@@ -21,7 +31,11 @@ else {
         New-Item -ItemType Directory -Path $penta_path
     }
 
+<<<<<<< HEAD
     $jsonVar | Out-File "$penta_path\Remove_bloatware_info.json"
+=======
+    $jsonVar | Out-File "$penta_path\Remove_Bloatware_Info.json"
+>>>>>>> 05e630a876463b1339f18e8f65560d804c1dbe34
 
     Write-Host "======================================="
     Write-Host "---    Start Removing Bloatware     ---"
@@ -158,7 +172,11 @@ else {
             "Print3D"
             "RemoteDesktop"
             "Royal Revolt"
+<<<<<<< HEAD
             "ScreenSketch"
+=======
+            #"ScreenSketch"
+>>>>>>> 05e630a876463b1339f18e8f65560d804c1dbe34
             "ShazamEntertainmentLtd.Shazam"
             "SkypeApp"
             "Speed Test"
@@ -197,8 +215,43 @@ else {
             "ZuneMusic"
             "ZuneVideo"
             #"WindowsCalculator"
+<<<<<<< HEAD
             #"WindowsReadingList"
             #"WindowsStore"
+=======
+            "WindowsReadingList"
+            #"WindowsStore"
+            "1527c705-839a-4832-9118-54d4Bd6a0c89"
+"5A894077.McAfeeSecurity"
+"AppUp.IntelConnectivityPerformanceSuite"
+"AppUp.IntelGraphicsExperience"
+"27EB4BA.DropboxOEM"
+"c5e2524a-ea46-4f67-841f-6a9465d9d515"
+"Clipchamp.Clipchamp"
+"DesktopView"
+"E2A4F912-2574-4A75-9BB0-0D023378592B"
+"EnvironmentsApp"
+"F46D4000-FD22-4DB4-AC8E-4E1DDDE828FE"
+"HoloCamera"
+"HoloItemPlayerApp"
+"HoloShell"
+"Microsoft.549981C3F5F10"
+"MicrosoftWindows.Client.WebExperience"
+"MicrosoftWindows.UndockedDevKit"
+"MicrosoftWindows.UndockedDevKit"
+"MixedRealityLearning"
+"NcsiUwpApp"
+"Passthrough"
+"PortraitDisplays.HPDisplayControl"
+"RoomAdjustment"
+"WebAuthBridgeInternet"
+"WebAuthBridgeInternetSso"
+"WebAuthBridgeIntranetSso"
+"WhatsNew"
+"Windows.CBSPreview"
+"windows.immersivecontrolpanel"
+"Windows.PrintDialog"
+>>>>>>> 05e630a876463b1339f18e8f65560d804c1dbe34
         )
 
         $Other_Bloatware = @(
@@ -279,9 +332,15 @@ else {
         Write-Host "Removing Bloatware"
 
         foreach ($Bloat in $Bloatware) {
+<<<<<<< HEAD
             Get-AppxPackage -allusers  "*$Bloat*" | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
             Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "*$Bloat*" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
             Write-Host "Trying to remove $Bloat."
+=======
+            Get-AppxPackage -AllUsers  "*$Bloat*" | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue
+            Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "*$Bloat*" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
+            Write-Host "Trying to remove $Bloat"
+>>>>>>> 05e630a876463b1339f18e8f65560d804c1dbe34
         }
             
         #Find and remove installed bloatwares with DISM
@@ -290,7 +349,11 @@ else {
         foreach ($Bloat in $installed_bloatwares) {
             $to_remove = $Bloat.substring(14) #Filter only the value of PackageName
             DISM /Online /Remove-ProvisionedAppxPackage /PackageName:$to_remove
+<<<<<<< HEAD
             Write-Host "Removing $to_remove ."
+=======
+            Write-Host "Removing $to_remove"
+>>>>>>> 05e630a876463b1339f18e8f65560d804c1dbe34
         }
 
         # List of built-in apps to remove
@@ -1075,4 +1138,8 @@ else {
     Write-Host "           $(hostname)                 "
     Write-Host "======================================="
 
+<<<<<<< HEAD
 } 
+=======
+} 
+>>>>>>> 05e630a876463b1339f18e8f65560d804c1dbe34
